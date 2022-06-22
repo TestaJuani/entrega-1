@@ -1,5 +1,6 @@
 import React from "react";
-import logo from "../../logo.svg";
+import logo from "../../imagenes/LogoB.png";
+import CartWidget from "../CartWidget";
 import "./styles.css";
 
 
@@ -33,8 +34,7 @@ const NavBar = () => {
                     <a href="#galeria" className="links">GALERIA</a>
                 </li>
                 <li >
-                  <a href="#carrito" className="links">CARRITO
-                  </a>
+                 <CartWidget/>
                 </li>
             </ul>
         </nav>
