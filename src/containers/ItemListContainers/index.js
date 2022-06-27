@@ -9,7 +9,7 @@ const ItemListContainer = ({ greeting }) => {
   return (
     <div>
       <p>{greeting}</p>
-      <ItemCount handleAdd={handleAdd} initial={0} stock={2} />
+      <ItemCount handleAdd={handleAdd} initial={1} stock={4} />
     </div>
   );
 };

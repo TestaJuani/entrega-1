@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./styles.css";
 
 const ItemCount = ({ handleAdd, initial, stock }) => {
-  let [count, setCount] = useState(0);
+  let [count, setCount] = useState(initial);
 
   const onAdd = () => {
     if (count < stock) {
