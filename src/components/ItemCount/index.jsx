@@ -6,15 +6,13 @@ const ItemCount = ({ handleAdd, initial, stock }) => {
 
   const onAdd = () => {
     if (count < stock) {
-      count++;
+      setCount(count+1);
     }
-    return setCount(count);
   };
   const onDecrement = () => {
     if (count > initial) {
-      count--;
+      setCount(count-1);
     }
-    return setCount(count);
   };
   return (
     <div>
