@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../../imagenes/LogoB.png";
 import CartWidget from "../CartWidget";
 import "./styles.css";
@@ -10,28 +11,28 @@ const NavBar = () => {
         <nav className="nav-header-1">
             <ul>            
                 <li>
-                    <a href="#inicio" className="links">INICIO</a>
+                    <Link to="/" className="links">HOME</Link>
                 </li>
                 <li>
-                    <a href="#menu" className="links">MENU</a> 
+                    <Link to="/category/electronics" className="links">ELECTRONICS</Link> 
                 </li>
                 <li>
-                    <a href="#contacto" className="links">CONTACTO</a>
+                    <Link to="/category/jewelery" className="links">JEWELERY</Link>
                 </li>
             </ul>
         </nav>
         <div className="container-logo-header">
-            <a href="#logo">
+            <Link to="/">
                 <img src={logo} alt="Logo" className="logo-header"/>
-            </a>
+            </Link>
         </div>  
         <nav className="nav-header-2">
             <ul>
                 <li>
-                    <a href="#nosotros" className="links">NOSOTROS</a>
+                    <Link to="/category/women's clothing" className="links">WOMEN'S CLOTHING</Link>
                 </li>
                 <li>
-                    <a href="#galeria" className="links">GALERIA</a>
+                    <Link to="/category/men's clothing" className="links">MEN'S CLOTHING</Link>
                 </li>
                 <li >
                  <CartWidget/>
