@@ -1,11 +1,17 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../imagenes/LogoB.png";
 import CartWidget from "../CartWidget";
+import { Shop } from "../../context/ShopContext";
 import "./styles.css";
 
 
 const NavBar = () => {
+
+    const value = useContext(Shop);
+ console.log(value);
     return (
         <header>
         <nav className="nav-header-1">
@@ -34,9 +40,10 @@ const NavBar = () => {
                 <li>
                     <Link to="/category/men's clothing" className="links">MEN'S CLOTHING</Link>
                 </li>
-                <li >
+                <li>
                  <CartWidget/>
                 </li>
+                
             </ul>
         </nav>
     </header>

@@ -10,7 +10,6 @@ const ItemListContainer = () => {
 
   const params = useParams()
 
-  console.log(params);
 
   useEffect(() => {
 
@@ -37,7 +36,6 @@ const ItemListContainer = () => {
     }
   }, [params, productos])
 
-  console.log(productos);
   return (
     <div>
       {productos.length !== 0 ?
