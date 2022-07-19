@@ -19,7 +19,6 @@ const ItemCount = ({ handleAdd, stock }) => {
     if (count <= stock) {
       handleAdd(count)
     }
-    else {alert("aca")}
   }
 
 

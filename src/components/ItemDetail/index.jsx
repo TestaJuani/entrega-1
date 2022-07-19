@@ -1,19 +1,25 @@
 import React, {useState} from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { Shop } from "../../context/ShopContext";
 import ItemCount from "../ItemCount";
 
 const ItemDetail = ({product}) => {
-    console.log(product);
+    
     const navigate = useNavigate();
 
     product.stock = 10;
     const [qtyAdded, setQtyAdded] = useState(0);
+
+    const {addItem} = useContext(Shop);
+
 
     const handleConfirm = (qty) => {
         setQtyAdded(qty);
     }
 
     const handleTerminate = () => {
+        addItem(product,qtyAdded);
         navigate('/cart')
     }
 

@@ -9,9 +9,7 @@ import "./styles.css";
 
 
 const NavBar = () => {
-
-    const value = useContext(Shop);
- console.log(value);
+    const {estadoA} = useContext(Shop);
     return (
         <header>
         <nav className="nav-header-1">
@@ -39,6 +37,9 @@ const NavBar = () => {
                 </li>
                 <li>
                     <Link to="/category/men's clothing" className="links">MEN'S CLOTHING</Link>
+                </li>
+                <li>
+                    <a href="#" className="links">{estadoA}</a>
                 </li>
                 <li>
                  <CartWidget/>
