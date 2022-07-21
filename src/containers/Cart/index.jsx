@@ -6,10 +6,10 @@ import { Shop } from "../../context/ShopContext";
 const Cart = () => {
 
   const navigate = useNavigate();
-  const {cart} = useContext(Shop) ;
-  const handleDelete = (id) => {
-    cart.filter(el => el.id !== id)
-  }
+  const {cart,handleDelete,handleAgregar,handleQuitar} = useContext(Shop) ;
+  
+
+
   const irAlCatalogo = () =>{
     navigate('/')
   }
@@ -20,8 +20,12 @@ const Cart = () => {
         return <div key={producto.id}>
           <h4>{producto.title}</h4>
           <img src={producto.image} alt={producto.title} width="100" height="100"/>
+          <div>
+          <button onClick={()=>handleAgregar(producto.id)}>Agregar</button>
           <p>cantidad:{producto.quantity}</p>
-          <button onClick={handleDelete(producto.id)}>DELETE</button>
+          <button onClick={()=>{handleQuitar(producto.id)}}>Quitar</button>
+          </div>
+          <button onClick={()=>handleDelete(producto.id)}>DELETE</button>
           </div>
         
       }):<>

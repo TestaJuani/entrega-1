@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import ItemCount from "../../components/ItemCount";
 import ItemList from "../../components/ItemList";
 import { useParams } from "react-router-dom";
+import {collection,query,getDocs} from "firebase/firestore";
+import { db } from "../../firebase/config";
 import "./styles.css";
 
 const ItemListContainer = () => {
@@ -15,10 +17,14 @@ const ItemListContainer = () => {
 
     const getProductos = async () => {
       try {
-        const response = await fetch('https://fakestoreapi.com/products');
-        const data = await response.json()
-        setProductos(data);
-        setProductosFiltrados(data);
+        const q =query(collection(db,"products"));
+        const querySnapshot = await getDocs (q);
+        const productos= [];
+        querySnapshot.forEach ((doc)=>{
+          productos.push({id: doc.id, ...doc.data()});
+        });
+        setProductos(productos);
+        setProductosFiltrados(productos)
       } catch (error) {
         console.log("Hubo un error:");
         console.log(error);
