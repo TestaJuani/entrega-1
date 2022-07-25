@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import {collection,query,getDocs} from "firebase/firestore";
 import { db } from "../../firebase/config";
 import "./styles.css";
+import algoritmoGuardadoAutomático from "../../utils/guardarProductos";
 
 const ItemListContainer = () => {
   const [productos, setProductos] = useState([])
@@ -17,6 +18,7 @@ const ItemListContainer = () => {
 
     const getProductos = async () => {
       try {
+        //algoritmoGuardadoAutomático();
         const q =query(collection(db,"products"));
         const querySnapshot = await getDocs (q);
         const productos= [];
