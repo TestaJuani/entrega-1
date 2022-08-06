@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import ItemCount from "../../components/ItemCount";
 import ItemList from "../../components/ItemList";
 import { useParams } from "react-router-dom";
 import {collection,query,getDocs} from "firebase/firestore";
@@ -10,9 +9,7 @@ import algoritmoGuardadoAutomático from "../../utils/guardarProductos";
 const ItemListContainer = () => {
   const [productos, setProductos] = useState([])
   const [productosFiltrados, setProductosFiltrados] = useState([])
-
   const params = useParams()
-
 
   useEffect(() => {
 

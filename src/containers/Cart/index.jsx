@@ -1,52 +1,41 @@
-import React from "react";
-import { useContext } from "react";
+import React,{ useContext } from "react";
+import CheckOut from '../../components/CheckOut';
 import { useNavigate } from "react-router-dom";
 import { Shop } from "../../context/ShopContext";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore";
-import { db } from "../../firebase/config";
-import ordenGenerada from '../../utils/generarOrden';
-import guardarOrden from '../../utils/guardarOrden';
+import "./styles.css"
+
 
 const Cart = () => {
 
   const navigate = useNavigate();
   const {cart,handleDelete,handleAgregar,handleQuitar} = useContext(Shop) ;
-  
-  const confirmarOrden = async () => {
-    console.log("Aca");
-    const orden = ordenGenerada("Juan", "Av.Santa Fe", cart, 1240);
-    guardarOrden(cart, orden)
-
-    
-
-  // Add a new document in collection "cities"
-  const docRef = await addDoc(collection(db, "orders"), orden)
-    console.log("Document written with ID: ",docRef.id);
-  }
 
   const irAlCatalogo = () =>{
-    navigate('/')
+    navigate('/menu')
   }
   return (
-    <div>
+    <div className="contenedor-cart">
+      <div className="contenedor-card-cart">
+        <h2 className="titulo-contenedor-card-cart">RESUMEN</h2>
       {(cart.length !== 0)?
       cart.map(producto => {
-        return <div key={producto.id}>
-          <h4>{producto.title}</h4>
-          <img src={producto.image} alt={producto.title} width="100" height="100"/>
-          <div>
-          <button onClick={()=>handleAgregar(producto.id)}>Agregar</button>
-          <p>cantidad:{producto.quantity}</p>
-          <button onClick={()=>{handleQuitar(producto.id)}}>Quitar</button>
-          </div>
-          <button onClick={()=>handleDelete(producto.id)}>DELETE</button>
-          <button onClick={confirmarOrden}>Confirmar compra</button>
-          </div>
-        
-      }):<>
-      <p>Tu carrito esta vacio</p>
-      <button onClick={irAlCatalogo}>Ir al catalogo </button>
-      </>}
+        return  <div key={producto.id} className="card-cart">
+                  <h4 className="titulo-card-cart">{producto.title}</h4>
+                  <img src={producto.image} alt={producto.title} className="img-card-cart"/>
+                  <p className="precio-card-cart">Precio: {producto.price.toFixed(2)}</p>
+                  <div className="contenedor-add-dec-card-cart">
+                    <button className="boton-dec-card-cart" onClick={()=>{handleQuitar(producto.id)}}>Quitar</button>
+                    <p className="cantidad-card-cart">cantidad:{producto.quantity}</p>
+                    <button className="boton-add-card-cart" onClick={()=>handleAgregar(producto.id)}>Agregar</button>
+                    <button className="boton-delete-cart" onClick={()=>handleDelete(producto.id)}>DELETE</button>
+                  </div>             
+                </div>
+      }):  
+      <button onClick={irAlCatalogo}>Ir al catalogo </button>}
+      </div>
+      {(cart.length !== 0)?
+      <CheckOut/>
+      :<p>Tu carrito esta vacio</p>}
     </div>
   )
 };

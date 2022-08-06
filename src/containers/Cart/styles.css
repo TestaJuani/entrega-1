@@ -1,0 +1,101 @@
+.contenedor-cart{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 5em;  
+}
+
+.contenedor-card-cart{
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo-contenedor-card-cart{
+    text-align: center;
+}
+
+.card-cart{
+    width: 20em;
+    padding: 1em;
+    margin:1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.59);
+    -webkit-box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.59);
+    -moz-box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.59);
+}
+
+.titulo-card-cart{
+    margin: 0px;
+}
+
+.img-card-cart{
+    width: 100px;
+    margin-top: 2em;    
+}
+
+.contenedor-add-dec-card-cart{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1em;
+}
+
+.boton-dec-card-cart{
+    background-color: rgba(255, 0, 0, 0.641);
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cantidad-card-cart{
+    margin: 5px;
+}
+
+.boton-add-card-cart{
+    background-color: rgba(0, 128, 0, 0.66);
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+.boton-delete-cart{
+    background-color: rgba(110, 110, 110, 0.486);
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 5px;
+    margin-left:10px;
+}
+
+
+.contenedor-formulario-cart{
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario{
+    width: 20em;
+    padding: 1em;
+    margin:1em;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.59);
+    -webkit-box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.59);
+    -moz-box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.59);
+
+}
+
+.titulo-contenedor-formulario-cart{
+    text-align: center;
+}
+
+.container-label-input{
+    display: flex;
+    flex-direction: column;
+}

@@ -3,18 +3,21 @@ import React, { createContext, useState } from "react";
 export const Shop = createContext();
 
 const ShopProvider = ({ children }) => {
-  const [estadoA, setEstadoA] = useState("Valor por defecto");
   const [cart, setCart] = useState([]);
 
   //Agrego un item al carrito
   //Evaluo si ya existe ese item en el carrito y lo sumo a la cantidad del mismo
-  const addItem = (producto, cantidad) => {
+  const addItem = (producto, cantidad, precioCantidad) => {
     const productoRepetido = isInCart(producto);
     if (productoRepetido) {
       productoRepetido.quantity += cantidad;
+      productoRepetido.price += precioCantidad;
       setCart([...cart]);
     } else {
-      setCart([...cart, { ...producto, quantity: cantidad }]);
+      setCart([
+        ...cart,
+        { ...producto, quantity: cantidad, price: precioCantidad },
+      ]);
     }
   };
 
@@ -28,9 +31,13 @@ const ShopProvider = ({ children }) => {
   };
   //Restar / Sumar cantidad a un producto del carrito
   let encontrarProducto;
+  let actualizarPrecio;
   const handleAgregar = (id) => {
     encontrarProducto = cart.findIndex((el) => el.id === id);
     if (cart[encontrarProducto].quantity < cart[encontrarProducto].stock) {
+      actualizarPrecio =
+        cart[encontrarProducto].price / cart[encontrarProducto].quantity;
+      cart[encontrarProducto].price += actualizarPrecio;
       cart[encontrarProducto].quantity += 1;
       setCart([...cart]);
     } else {
@@ -41,18 +48,20 @@ const ShopProvider = ({ children }) => {
   const handleQuitar = (id) => {
     encontrarProducto = cart.findIndex((el) => el.id === id);
     if (cart[encontrarProducto].quantity > 0) {
+      actualizarPrecio =
+        cart[encontrarProducto].price / cart[encontrarProducto].quantity;
+      cart[encontrarProducto].price -= actualizarPrecio;
       cart[encontrarProducto].quantity -= 1;
       setCart([...cart]);
-    } else {
-      handleDelete(id);
+      if (cart[encontrarProducto].quantity == 0) {
+        handleDelete(id);
+      }
     }
   };
 
   return (
     <Shop.Provider
       value={{
-        estadoA,
-        setEstadoA,
         addItem,
         cart,
         handleDelete,

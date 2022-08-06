@@ -3,38 +3,39 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Shop } from "../../context/ShopContext";
 import ItemCount from "../ItemCount";
+import "./style.css"
 
 const ItemDetail = ({product}) => {
     
     const navigate = useNavigate();
 
-    product.stock = 10;
     const [qtyAdded, setQtyAdded] = useState(0);
-
+    const [precioCant,setPrecioCant] = useState(0);
     const {addItem} = useContext(Shop);
 
 
-    const handleConfirm = (qty) => {
+    const handleConfirm = (qty,cantPrecio) => {
         setQtyAdded(qty);
+        setPrecioCant(cantPrecio)
     }
 
     const handleTerminate = () => {
-        addItem(product,qtyAdded);
+        addItem(product,qtyAdded,precioCant);
         navigate('/cart')
     }
 
     return (
-        <div>
-        <h1>{product.title}</h1>
-        <img src={product.image} alt=""/>
-        <p>{product.description}</p>
-        {!qtyAdded ?
-                 <ItemCount handleAdd={handleConfirm} stock={product.stock} />
-                :
-                <button onClick={handleTerminate}>Terminar compra</button>
-            }
-       
-    </div>
+        <div className="container-detail">
+            <div className="card-detail">
+                <h3 className="titulo-detail">{product.title}</h3>
+                <img src={product.image} alt="" className="img-detail"/>
+                <p>{product.description}</p>
+                {!qtyAdded ?
+                <ItemCount handleAdd={handleConfirm} stock={product.stock} precio={product.price} />
+                :<button className="button-detail" onClick={handleTerminate}>Terminar compra</button>
+                }
+            </div>
+        </div>
     )
 }
 

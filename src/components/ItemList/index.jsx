@@ -1,24 +1,30 @@
 import React from 'react'
-import { useContext } from 'react'
-import { Shop } from '../../context/ShopContext'
 import Item from '../Item'
+import "./styles.css"
 
 const ItemList = ({products}) => {
-
-  const {setEstadoA} = useContext(Shop);
-
-  const handleChangeState = () =>{
-    setEstadoA("Otro valor")
+  let categoryProducto;
+  if(products.length<20) {
+    categoryProducto = products[0].category;
   }
-  return (
-    <div>
+  else {
+    categoryProducto = "menu"
+  }
 
-    <ul>
+
+
+  return (
+    <div className='container-itemList'>
+    {categoryProducto == "electronics" && <h1>Nuestros productos de electronica</h1>}
+    {categoryProducto == "jewelery" && <h1>Nuestras joyas</h1>}
+    {categoryProducto == "women's clothing" && <h1>Ropa de mujer</h1>}
+    {categoryProducto == "men's clothing" && <h1>Ropa de hombre</h1>}
+    {categoryProducto == "menu" && <h1>Nuestros productos</h1>}
+    <div className='lista-productos'>
         {products.map(producto => {
-            return <Item product={producto} key={producto.id}/>
+            return  <Item product={producto} key={producto.id}/>
         })}
-    </ul>
-    <button onClick={handleChangeState}>Cambio de estado</button>
+    </div>
     </div>
   )
 }

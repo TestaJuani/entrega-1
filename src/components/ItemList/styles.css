@@ -1,0 +1,10 @@
+.container-itemList{
+display: flex;
+flex-direction:column;
+}
+
+.lista-productos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
