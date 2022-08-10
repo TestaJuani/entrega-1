@@ -19,7 +19,7 @@ const NavBar = () => {
                         <Link to="/" className="links">INICIO</Link>
                     </li>
                     <li>
-                        <Link to="/menu" className="links">MENU</Link>
+                        <Link to="/catalogo" className="links">CATALOGO</Link>
                     </li>
                     <li>
                         <Link to="/category/electronics" className="links">ELECTRONICA</Link> 

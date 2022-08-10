@@ -1,7 +1,5 @@
-import React,{ useContext, useState } from "react";
+import React,{ useContext} from "react";
 import { Shop } from "../../context/ShopContext";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "../../firebase/config";
 import generarOrden from '../../utils/generarOrden';
 import guardarOrden from '../../utils/guardarOrden';
 import "./styles.css"
@@ -11,9 +9,16 @@ import "./styles.css"
 
 
 const CheckOut = () =>{
-    const {cart} = useContext(Shop);
+    let {cart,setCart} = useContext(Shop);
+    
 
     const calcularValorTotal = cart.reduce((acumulador,elemento) => acumulador + elemento.price,0);
+    let cantidadCarrito = 0;
+    if(cart.length !== 0 ){
+        for (const el of cart) {
+            cantidadCarrito +=  el.quantity;
+        }
+    }
     const confirmarOrden = async (e) => {
         e.preventDefault();
         let miFormulario = e.target;
@@ -24,19 +29,16 @@ const CheckOut = () =>{
 
         const orden = generarOrden(nombre,apellido, direccion,telefono, cart, calcularValorTotal);
         guardarOrden(cart, orden);
+        cart = [];
+        setCart(cart)
+        
     
-    
-
-    // Add a new document in collection "cities"
-    const docRef = await addDoc(collection(db, "orders"), orden)
-    console.log("Document written with ID: ",docRef.id);
-
     }
 
 
     return (
         <div className="contenedor-formulario-cart">
-            <h2 className="titulo-contenedor-formulario-cart">FORMULARIO</h2>
+            <h2 className="titulo-contenedor-formulario-cart">FINALIZAR COMPRA</h2>
             <form className="formulario" onSubmit={confirmarOrden}>
                 <div className="container-label-input">
                     <label htmlFor="nombre">Nombre del pedido</label>
@@ -54,6 +56,7 @@ const CheckOut = () =>{
                     <label htmlFor="telefono">Telefono</label>
                     <input type="number" name="telefono" required/>
                 </div>
+                <p>Productos en tu carrito: {cantidadCarrito}</p>
                 <p>Valor total de la compra: ${calcularValorTotal.toFixed(2)}</p>               
                 <div className="container-label-input">
                      <input type="submit" value="Realizar compra"/>

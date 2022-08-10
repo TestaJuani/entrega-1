@@ -37,7 +37,9 @@ const guardarOrden = (cart, orden) => {
             .then(({ id }) => {
               //Recién hacemos el commit una vez que se genera la order
               batch.commit().then(() => {
-                alert("Se genero la order con id: " + id);
+                alert(
+                  `Su orden fue generada con el id: ${id} . Nos pondremos en contacto para mas informacion`
+                );
               });
             })
             .catch((err) => {

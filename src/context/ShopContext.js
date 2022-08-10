@@ -53,7 +53,7 @@ const ShopProvider = ({ children }) => {
       cart[encontrarProducto].price -= actualizarPrecio;
       cart[encontrarProducto].quantity -= 1;
       setCart([...cart]);
-      if (cart[encontrarProducto].quantity == 0) {
+      if (cart[encontrarProducto].quantity === 0) {
         handleDelete(id);
       }
     }
@@ -67,6 +67,7 @@ const ShopProvider = ({ children }) => {
         handleDelete,
         handleAgregar,
         handleQuitar,
+        setCart,
       }}
     >
       {children}

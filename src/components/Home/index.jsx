@@ -20,7 +20,7 @@ const Home = () => {
                 <div className="contiene-img1">
                 </div>
                 <div className="contiene-parrafo">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente corporis ex aliquid explicabo a, ullam odio quaerat eveniet at beatae. Quia sint sed, possimus ad debitis consequuntur commodi at. Aut?</p>
+                    <p>Disponemos de una gran variedad de joyas, excelente calidad y al mejor precio.</p>
                     <Link to="/category/jewelery" className="links-home">VER MAS</Link>
                 </div>
             </div>
@@ -40,7 +40,7 @@ const Home = () => {
             <h2>Electronica</h2>
             <div className="contiene-img-parrafo">
                 <div className="contiene-parrafo">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam velit atque earum optio fugit id nobis doloribus reiciendis. Iste cum consequatur, eveniet debitis asperiores dignissimos et dolor nulla? Quibusdam.</p>
+                    <p>Disponemos de una gran variedad de productos de electronica, de excelente calidad y al mejor precio.</p>
                     <Link to="/category/electronics" className="links-home">VER MAS</Link>
                 </div>
             <div className="contiene-img2"></div>

@@ -11,7 +11,7 @@ const Cart = () => {
   const {cart,handleDelete,handleAgregar,handleQuitar} = useContext(Shop) ;
 
   const irAlCatalogo = () =>{
-    navigate('/menu')
+    navigate('/catalogo')
   }
   return (
     <div className="contenedor-cart">
@@ -27,7 +27,7 @@ const Cart = () => {
                     <button className="boton-dec-card-cart" onClick={()=>{handleQuitar(producto.id)}}>Quitar</button>
                     <p className="cantidad-card-cart">cantidad:{producto.quantity}</p>
                     <button className="boton-add-card-cart" onClick={()=>handleAgregar(producto.id)}>Agregar</button>
-                    <button className="boton-delete-cart" onClick={()=>handleDelete(producto.id)}>DELETE</button>
+                    <button className="boton-delete-cart" onClick={()=>handleDelete(producto.id)}>Eliminar</button>
                   </div>             
                 </div>
       }):  

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ItemList from "../../components/ItemList";
 import { useParams } from "react-router-dom";
-import {collection,query,getDocs} from "firebase/firestore";
-import { db } from "../../firebase/config";
+import getCollection from '../../utils/getCollection';
 import "./styles.css";
 import algoritmoGuardadoAutomático from "../../utils/guardarProductos";
 
@@ -16,14 +15,9 @@ const ItemListContainer = () => {
     const getProductos = async () => {
       try {
         //algoritmoGuardadoAutomático();
-        const q =query(collection(db,"products"));
-        const querySnapshot = await getDocs (q);
-        const productos= [];
-        querySnapshot.forEach ((doc)=>{
-          productos.push({id: doc.id, ...doc.data()});
-        });
+        const productos = await getCollection("products");
         setProductos(productos);
-        setProductosFiltrados(productos)
+        setProductosFiltrados(productos);
       } catch (error) {
         console.log("Hubo un error:");
         console.log(error);

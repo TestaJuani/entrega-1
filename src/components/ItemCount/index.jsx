@@ -25,7 +25,7 @@ const ItemCount = ({ handleAdd, stock,precio }) => {
 
   return (
     <div className="container-count">
-      <p>${calcPrecio}</p>
+      <p>${calcPrecio.toFixed(2)}</p>
       <div className="container-cantidad-count">
         <button onClick={onAdd} className="button-add-dec">+</button>
         <p>{count}</p>
